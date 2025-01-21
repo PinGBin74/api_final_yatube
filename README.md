@@ -2,7 +2,7 @@
 
 API_Final - законченная версия API для yatube.
 
-**Стек:** Python 3.7, Django Rest Framework, SQLite
+**Стек:** Python 3.9, Django Rest Framework, SQLite
 
 ## Как запустить проект:
 
