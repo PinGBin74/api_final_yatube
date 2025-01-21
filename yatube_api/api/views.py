@@ -1,4 +1,3 @@
-# TODO:  Напишите свой вариант
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
@@ -12,7 +11,8 @@ from .permission import IsAuthorOrReadOnly
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [IsAuthorOrReadOnly, IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthorOrReadOnly,
+                          IsAuthenticatedOrReadOnly]
     pagination_class = LimitOffsetPagination
     filter_backends = [DjangoFilterBackend]
 
@@ -21,7 +21,9 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
 class FollowViewSet(
-    mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet
 ):
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
