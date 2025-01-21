@@ -1,3 +1,5 @@
+from email.headerregistry import Group
+
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters, mixins
 from django.shortcuts import get_object_or_404
@@ -10,7 +12,7 @@ from rest_framework.permissions import (
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (
     CommentSerializer,
-    PostSerializer, FollowSerializer
+    PostSerializer, FollowSerializer, GroupSerializer
 )
 from posts.models import Follow, Post, User
 
@@ -57,3 +59,9 @@ class CommentViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         post = get_object_or_404(Post, pk=self.kwargs.get('post_id'))
         serializer.save(author=self.request.user, post=post)
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
