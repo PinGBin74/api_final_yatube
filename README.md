@@ -12,18 +12,18 @@ API_Final - законченная версия API для yatube c автори
 
 - **Создать и активировать виртуальное окружение:**
   ```sh
-  python3 -m venv env
+  python -m venv env
   source env/bin/activate
 
 - **Установить зависимости из файла requirements.txt:**
   ```sh
-  python3 -m pip install --upgrade pip
+  python -m pip install --upgrade pip
   pip install -r requirements.txt
 
 - **Выполнить миграции:**
   ```sh
-  python3 manage.py migrate
+  python manage.py migrate
 
 - **Запустить проект:**
   ```sh
-  python3 manage.py runserver
+  python manage.py runserver
